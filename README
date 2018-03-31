@@ -1,0 +1,12 @@
+# if you want to compile this program, you can run this command.
+# This can include your local classpath and jedis-2.9.0.jar
+
+javac -classpath jedis-2.9.0.jar Date.java PIM*.java
+
+# if you want to run this program, please run this command.
+# Please notise ":.", this means that you redefine classpath.
+# Generally, if you don't redefine your classpath, it auto
+# include current directory(.), but you redefine it. So you
+# must include it.
+
+java -cp jedis-2.9.0.jar:. PIMManager
