@@ -28,4 +28,20 @@ public abstract class PIMEntity {
     // Object, but redefined here as abstract to make sure
     // that derived classes actually implement it
     abstract public String toString();
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        PIMEntity todo = (PIMEntity) o;
+
+        return toString().equals(o.toString());
+
+    }
+
+    @Override
+    public int hashCode() {
+        return toString().hashCode();
+    }
 }
