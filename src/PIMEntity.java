@@ -36,7 +36,7 @@ public abstract class PIMEntity {
 
         PIMEntity todo = (PIMEntity) o;
 
-        return toString().equals(o.toString());
+        return toString().equals(todo.toString());
 
     }
 
