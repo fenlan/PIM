@@ -17,12 +17,12 @@ public class PIMNote extends PIMEntity {
 	public void fromString(String s) {
 		String regx = "([^ ]*) ([^ ]*) ([^\n]*)";
 		Pattern pattern = Pattern.compile(regx);
-        Matcher matcher = pattern.matcher(s);
+		Matcher matcher = pattern.matcher(s);
 
-        if (matcher.find()) {
-        	super.setPriority(matcher.group(2));
-        	setNoteItem(matcher.group(3));
-        }
+		if (matcher.find()) {
+			super.setPriority(matcher.group(2));
+			setNoteItem(matcher.group(3));
+		}
 	}
 	public String toString() {
 		return "NOTE " + super.Priority + " " + noteItem;
