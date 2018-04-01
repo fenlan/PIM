@@ -67,11 +67,11 @@ PIM Create 一个数据进程序List中，当进行Save操作时将List中数据
 
 ## 运行说明
 If you want to compile this program, you can run this command. This can include your local classpath and jedis-2.9.0.jar
-``` java
+```
 javac -classpath lib/* src/*.java -d out/
 ```
 
 If you want to run this program, please run this command. Please notise ":out", this means that you redefine classpath. Generally, if you don't redefine your classpath, it auto include out directory(default current directory), but you redefine it. So you must include it.
-``` java
+```
 java -cp lib/*:out PIMManager
 ```
