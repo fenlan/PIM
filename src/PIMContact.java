@@ -25,14 +25,14 @@ public class PIMContact extends PIMEntity {
 	public void fromString(String s) {
 		String regx = "([^ ]*) ([^ ]*) ([^ ]*) ([^ ]*) ([^\n]*)";
 		Pattern pattern = Pattern.compile(regx);
-        Matcher matcher = pattern.matcher(s);
+		Matcher matcher = pattern.matcher(s);
 
-        if (matcher.find()) {
-        	super.setPriority(matcher.group(2));
-        	setFirstName(matcher.group(3));
-        	setLastName(matcher.group(4));
-        	setEmail(matcher.group(5));
-        }
+		if (matcher.find()) {
+			super.setPriority(matcher.group(2));
+			setFirstName(matcher.group(3));
+			setLastName(matcher.group(4));
+			setEmail(matcher.group(5));
+		}
 	}
 	public String toString() {
 		return "CONTACT " + super.Priority + " " + firstName + " " + lastName + " " + email;
