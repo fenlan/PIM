@@ -24,13 +24,13 @@ public class PIMTodo extends PIMEntity implements Date {
 	public void fromString(String s) {
 		String regx = "([^ ]*) ([^ ]*) ([^ ]*) ([^\n]*)";
 		Pattern pattern = Pattern.compile(regx);
-        Matcher matcher = pattern.matcher(s);
+		Matcher matcher = pattern.matcher(s);
 
-        if (matcher.find()) {
-        	super.setPriority(matcher.group(2));
-        	setDate(matcher.group(3));
-        	setTodoItem(matcher.group(4));
-        }
+		if (matcher.find()) {
+			super.setPriority(matcher.group(2));
+			setDate(matcher.group(3));
+			setTodoItem(matcher.group(4));
+		}
 	}
 	public String toString() { return "TODO " + super.Priority + " " + date + " " + todoItem ; }
 
@@ -58,21 +58,20 @@ public class PIMTodo extends PIMEntity implements Date {
 	public boolean checkFormat(String date) {
 		if (date == null)			return false;
 
-    	//set the format to use as a constructor argument
-    	SimpleDateFormat dateFormat = new SimpleDateFormat("MM/dd/yyyy");
+		//set the format to use as a constructor argument
+		SimpleDateFormat dateFormat = new SimpleDateFormat("MM/dd/yyyy");
 
-    	if (date.trim().length() != dateFormat.toPattern().length())	return false;
+		if (date.trim().length() != dateFormat.toPattern().length())	return false;
 
-    	dateFormat.setLenient(false);
+		dateFormat.setLenient(false);
 
-    	try {
-      		//parse the date parameter
-      		dateFormat.parse(date.trim());
-    	}
-    	catch (ParseException pe) {
-      		return false;
-    	}
-    	return true;
+		try {
+			//parse the date parameter
+			dateFormat.parse(date.trim());
+		}
+		catch (ParseException pe) {
+			return false;
+		}
+		return true;
 	}
-	
 }
