@@ -76,3 +76,10 @@ If you want to run this program, please run this command. Please notise ":out", 
 ```
 java -cp lib/*:out PIMManager
 ```
+
+## 截图
+<div align=center>
+
+<image src="https://github.com/fenlan/Mycode/blob/master/images/PIM.png"></image>
+
+</div>
