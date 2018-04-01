@@ -46,6 +46,13 @@ public abstract class PIMEntity {
 }
 ```
 
+## 截图
+<div align=center>
+
+<image src="https://github.com/fenlan/Mycode/blob/master/images/PIM.png"></image>
+
+</div>
+
 ## 四个功能描述
 - `PIMTodo` : Todo items must be PIMEntites defined in a class named PIMTodo. Each todo item must have a priority (a string), a date and a string that contains the actual text of the todo item.
 
@@ -55,13 +62,6 @@ public abstract class PIMEntity {
 
 - `PIMContact` : Contact items must be PIMEntites defined in a class named PIMContact. Each contact item must have a priority (a string), and strings for each of the following: first name, last name, email address.
 > There is one additional requirement on the implementation of the 4 item classes listed above, the 2 classes that involve a date must share an interface that you define. You must formally create this interface and have both PIMAppointment and PIMTodo implement this interface.
-
-## 截图
-<div align=center>
-
-<image src="https://github.com/fenlan/Mycode/blob/master/images/PIM.png"></image>
-
-</div>
 
 ## PIMManager
 You must also create a class named PIMManager that includes a main and provides some way of creating and managing items (from the terminal). You must support the following commands (functionality):
