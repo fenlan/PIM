@@ -1,6 +1,6 @@
 import java.util.Scanner;
-import java.util.List;
-import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.Set;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import redis.clients.jedis.Jedis;
@@ -10,7 +10,7 @@ public class PIMManager {
 	private static String  redisHost = "localhost";
 	private static int  redisPort = 6379;
 	private static Jedis jedis = new Jedis(redisHost,redisPort);
-	private static List<PIMEntity> list = new ArrayList<>();
+	private static Set<PIMEntity> list = new HashSet<>();
 
 	public static void main(String[] args) {
 		Scanner sc = new Scanner(System.in);
