@@ -4,6 +4,7 @@
 ![](https://travis-ci.org/fenlan/PIM.svg?branch=master)
 [![codebeat badge](https://codebeat.co/badges/9052f589-5937-43fe-a959-eb23469102e6)](https://codebeat.co/projects/github-com-fenlan-pim-master)
 ![size](https://github-size-badge.herokuapp.com/fenlan/PIM.svg)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 </div>
 
