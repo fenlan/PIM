@@ -1,6 +1,5 @@
 import java.util.Scanner;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.Iterator;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import redis.clients.jedis.Jedis;
@@ -10,7 +9,8 @@ public class PIMManager {
 	private static String  redisHost = "localhost";
 	private static int  redisPort = 6379;
 	private static Jedis jedis = new Jedis(redisHost,redisPort);
-	private static Set<PIMEntity> list = new HashSet<>();
+	// private static Set<PIMEntity> list = new HashSet<>();
+	private static PIMCollection list = new PIMCollection();
 
 	public static void main(String[] args) {
 		Scanner sc = new Scanner(System.in);
@@ -18,12 +18,17 @@ public class PIMManager {
 
 		while (true) {
 			System.out.println("---Enter a command (suported commands are List Create Save Load Quit)---");
+			System.out.println("---Enter a command (suported commands are GETTODO GETNOTE GETAPP GETCON)---");
 			switch (sc.nextLine()) {
 				case "List" : list(); break;
 				case "Create" : create(); break;
 				case "Save" : save(); break;
 				case "Load" : load(); break;
 				case "Quit" : System.exit(1); break;
+				case "GETTODO" : getTODO(); break;
+				case "GETNOTE" : getNOTE(); break;
+				case "GETAPP" : getAPP(); break;
+				case "GETCON" : getCON(); break;
 				default:
 					;
 			}
@@ -32,7 +37,7 @@ public class PIMManager {
 
 	private static void list() {
 		int i = 0;
-		for (PIMEntity item : list) {
+		for (PIMEntity item : list.list) {
 			System.out.println("Item " + ++i + ": " + item.toString());
 		}
 	}
@@ -71,7 +76,7 @@ public class PIMManager {
 		int i = 0;
 		int length = list.size();
 		String[] items = new String[length];
-		for (PIMEntity item : list) {
+		for (PIMEntity item : list.list) {
 			items[i++] = item.toString();
 		}
 		jedis.sadd(redisKey, items);
@@ -113,6 +118,34 @@ public class PIMManager {
 			}
 		}
 		System.out.println("Item hava been loaded from redis.");
+	}
+
+	private static void getTODO() {
+		int i = 0;
+		Iterator iterator = list.getTodos().iterator();
+		while (iterator.hasNext())
+			System.out.println("Item " + ++i + ": " + (PIMEntity)iterator.next());
+	}
+
+	private static void getNOTE() {
+		int i = 0;
+		Iterator iterator = list.getNotes().iterator();
+		while (iterator.hasNext())
+			System.out.println("Item " + ++i + ": " + (PIMEntity)iterator.next());
+	}
+
+	private static void getAPP() {
+		int i = 0;
+		Iterator iterator = list.getAppointments().iterator();
+		while (iterator.hasNext())
+			System.out.println("Item " + ++i + ": " + (PIMEntity)iterator.next());
+	}
+
+	private static void getCON() {
+		int i = 0;
+		Iterator iterator = list.getContact().iterator();
+		while (iterator.hasNext())
+			System.out.println("Item " + ++i + ": " + (PIMEntity)iterator.next());
 	}
 	
 }
