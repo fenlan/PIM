@@ -1,7 +1,9 @@
+import java.util.Date;
 import java.util.Scanner;
 import java.util.Iterator;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+import java.text.SimpleDateFormat;
 import redis.clients.jedis.Jedis;
 
 public class PIMManager {
@@ -19,6 +21,7 @@ public class PIMManager {
 		while (true) {
 			System.out.println("---Enter a command (suported commands are List Create Save Load Quit)---");
 			System.out.println("---Enter a command (suported commands are GETTODO GETNOTE GETAPP GETCON)---");
+			System.out.println("---Enter a command (suported commands GETDATE)---");
 			switch (sc.nextLine()) {
 				case "List" : list(); break;
 				case "Create" : create(); break;
@@ -29,6 +32,7 @@ public class PIMManager {
 				case "GETNOTE" : getNOTE(); break;
 				case "GETAPP" : getAPP(); break;
 				case "GETCON" : getCON(); break;
+				case "GETDATE" : getDATE(); break;
 				default:
 					;
 			}
@@ -144,6 +148,23 @@ public class PIMManager {
 	private static void getCON() {
 		int i = 0;
 		Iterator iterator = list.getContact().iterator();
+		while (iterator.hasNext())
+			System.out.println("Item " + ++i + ": " + (PIMEntity)iterator.next());
+	}
+
+	private static void getDATE() {
+		int i = 0;
+		Scanner sc = new Scanner(System.in);
+		System.out.println("Please Enter date as yyyy-MM-dd");
+		String date = sc.nextLine();
+		Date date1 = null;
+		try {
+			 date1 = new SimpleDateFormat("yyyy-MM-dd").parse(date);
+			 // System.out.println(date1);
+		} catch (Exception e) {
+			System.out.println(e);
+		}
+		Iterator iterator = list.getItemsForDate(date1).iterator();
 		while (iterator.hasNext())
 			System.out.println("Item " + ++i + ": " + (PIMEntity)iterator.next());
 	}
