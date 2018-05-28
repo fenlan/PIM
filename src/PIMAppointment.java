@@ -38,7 +38,7 @@ public class PIMAppointment extends PIMEntity implements Date {
 		String getStr;
 		Scanner sc = new Scanner(System.in);
 
-		System.out.println("Enter date for appointment item:");
+		System.out.println("Enter date for appointment item (yyyy-MM-dd):");
 		getStr = sc.nextLine();
 		while (!checkFormat(getStr)) {
 			System.out.println("Enter the right format date for appointment item:");
