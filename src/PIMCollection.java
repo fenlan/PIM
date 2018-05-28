@@ -210,12 +210,14 @@ public class PIMCollection implements Collection {
                 if (item instanceof PIMTodo)
                     todoitem = (PIMTodo)item;
                 SimpleDateFormat dateFormat = new SimpleDateFormat("MM/dd/yyyy");
+                // System.out.println(todoitem.getDate() + " " + dateFormat.format(date));
                 if (todoitem.getDate().equals(dateFormat.format(date))) pimCollection.add(item);
             }
             else if (patternAPP.matcher(str).find()) {
                 if (item instanceof PIMAppointment)
                     appitem = (PIMAppointment)item;
                 SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+                // System.out.println(todoitem.getDate() + " " + dateFormat.format(date));
                 if (appitem.getDate().equals(dateFormat.format(date))) pimCollection.add(item);
             }
         }
