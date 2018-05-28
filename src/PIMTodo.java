@@ -38,7 +38,7 @@ public class PIMTodo extends PIMEntity implements Date {
 		String getStr;
 		Scanner sc = new Scanner(System.in);
 
-		System.out.println("Enter date for todo item:");
+		System.out.println("Enter date for todo item (MM/dd/yyyy):");
 		getStr = sc.nextLine();
 		while (!checkFormat(getStr)) {
 			System.out.println("Enter the right format date for todo item:");
